@@ -8,12 +8,7 @@ import os
 # https://developers.sber.ru/docs/ru/gigachain/tutorials/llm-chain
 print("Begin")
 
-
 load_dotenv()  # Load variables from .env file
-
-credentials = os.getenv('credentials')
-
-print(f"credentials: {credentials}")
 
 # exit()
 
@@ -25,7 +20,7 @@ model = GigaChat(
 )
 
 messages = [
-    SystemMessage(content="Поздоровайся вежливо."),
+    SystemMessage(content="Поздоровайся вежливо и коротко."),
     HumanMessage(content="привет!"),
 ]
 

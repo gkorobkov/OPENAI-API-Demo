@@ -1,0 +1,2 @@
+packaging==25.0
+pipdeptree==2.28.0

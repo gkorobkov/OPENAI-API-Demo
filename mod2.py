@@ -1,4 +1,3 @@
-def f1():
+def f2():
     print(__file__)
     
-f1()

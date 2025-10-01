@@ -1,0 +1,8 @@
+langchain-gigachat  # Working with the GigaChat API for processing requests through LangChain
+langchain-community  # Additional utilities and tools from the LangChain community
+langgraph  # Building interaction chains between agents and data
+langgraph-checkpoint  # Saving and restoring dialogue state
+langgraph-cli  # Command-line interface for managing agents and chains
+langgraph-sdk  # Tools for developing custom agents and chains
+langchain_chroma  # Integration of LangChain with vector databases Chroma
+rapidfuzz  # Fast search for similar strings for request processing

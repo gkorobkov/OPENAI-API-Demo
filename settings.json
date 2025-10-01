@@ -1,0 +1,5 @@
+{
+    "course_data_path": "/data/courses.json", 
+    "glossary_data_path": "/data/ai-terms.json",
+    "default_similarity_threshold": 0.3
+}

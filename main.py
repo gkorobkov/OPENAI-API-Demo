@@ -13,15 +13,15 @@ load_dotenv()  # Load variables from .env file
 # exit()
 
 model = GigaChat(
-    credentials=os.getenv('credentials'),
+    #credentials=os.getenv('credentials'),
     scope="GIGACHAT_API_PERS",
     model="GigaChat",
     verify_ssl_certs=False,
 )
 
 messages = [
-    SystemMessage(content="Поздоровайся вежливо и коротко."),
-    HumanMessage(content="привет!"),
+    #SystemMessage(content="Напиши сколько сейчас времени. Поздоровайся вежливо и коротко."),
+    HumanMessage(content="Привет, какой посоветуешь курс?"),
 ]
 
 result = model.invoke(messages)
@@ -30,5 +30,10 @@ print(result)
 parser = StrOutputParser()
 res = parser.invoke(result)
 print(res)
+
+#response = model.invoke([HumanMessage(content="Привет, какой посоветуешь курс?")])
+#console = Console()
+#console.print(response)
+
 
 print("End")

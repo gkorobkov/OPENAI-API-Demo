@@ -35,7 +35,8 @@ tools = [
 ]
 
 model = GigaChat(
-    # credentials=os.getenv("OPENAI_CREDENTIALS"),
+    # token=os.getenv("OPENAI_ACCESS_TOKEN"),
+    # credentials=os.getenv("OPENAI_SECRET"),
     scope=os.getenv("OPENAI_SCOPE"),
     model=os.getenv("OPENAI_MODEL"),
     base_url=os.getenv("OPENAI_BASE_URL"),

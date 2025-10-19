@@ -1,39 +1,40 @@
 from langchain_gigachat.chat_models import GigaChat
 from langchain.schema import HumanMessage, SystemMessage
 from langchain_core.output_parsers import StrOutputParser
-
 from dotenv import load_dotenv
 import os
+from agents.agents import agent
 
-# https://developers.sber.ru/docs/ru/gigachain/tutorials/llm-chain
 print("Begin")
 
-load_dotenv()  # Load variables from .env file
 
-# exit()
+def chat(thread_id: str):
+    """
+    Main chat function.
+    """
+    config = {"configurable": {"thread_id": thread_id}}
+    print("Welcome!")
+    print("How can I help you? Type 'exit' to exit this chat.")
+    
+    while True:
+        try:
+            user_input = input("\n>>: ")
+            if user_input.lower() == "exit":
+                print("Goodbye!")
+                break
+            
+            response = agent.invoke({"messages": [("user", user_input.encode('utf-8', errors='replace').decode('utf-8'))]}, config=config)
+            # response = agent.invoke({"messages": [("user", user_input)]}, {"configurable": {"thread_id": thread_id}})
+            print("🤖 :", response["messages"][-1].content)
+        
+        except KeyboardInterrupt:
+            print("\nExiting. Goodbye!")
+            break
+        except Exception as e:
+            print("Error:", str(e))
 
-model = GigaChat(
-    #credentials=os.getenv('credentials'),
-    scope="GIGACHAT_API_PERS",
-    model="GigaChat",
-    verify_ssl_certs=False,
-)
-
-messages = [
-    #SystemMessage(content="Напиши сколько сейчас времени. Поздоровайся вежливо и коротко."),
-    HumanMessage(content="Привет, какой посоветуешь курс?"),
-]
-
-result = model.invoke(messages)
-print(result)
-
-parser = StrOutputParser()
-res = parser.invoke(result)
-print(res)
-
-#response = model.invoke([HumanMessage(content="Привет, какой посоветуешь курс?")])
-#console = Console()
-#console.print(response)
+if __name__ == "__main__":
+    chat('AI_consultant')
 
 
 print("End")
